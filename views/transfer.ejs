@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include ('./partials/header.ejs') %>
+    <div class="container grid_layout">
+      <main>
+        <section class="accounts">
+          <div class="">
+            <div class="activity_top">
+              <h4 class="secondary_text">
+                Domestic transfer - Enter the payee's information
+              </h4>
+            </div>
+            <form action="/payment" method="post">
+              <% if (typeof message !== 'undefined') { %>
+              <div class="messagediv">
+                <p><%= message %></p>
+              </div>
+              <% } %>
+              <div class="">
+                <select class="select_div">
+                  <option selected value="">Account type</option>
+                  <option value="">Savings</option>
+                  <option value="">Checking</option>
+                </select>
+              </div>
+              <div class="form_control">
+                <input
+                  class="formInput"
+                  type="text"
+                  name="recipientName"
+                  placeholder="Name"
+                  required
+                />
+              </div>
+              <div class="f_row">
+                <div class="form_control">
+                  <input
+                    class="formInput"
+                    type="text"
+                    name="routingNumber"
+                    placeholder="Routing Number"
+                    minlength="9"
+                    maxlength="9"
+                    required
+                  />
+                </div>
+                <div class="form_control">
+                  <input
+                    class="formInput"
+                    type="text"
+                    name="accountNumber"
+                    placeholder="Account Number"
+                    minlength="10"
+                    required
+                  />
+                </div>
+                <div class="form_control">
+                  <input
+                    class="formInput"
+                    type="text"
+                    name="amount"
+                    placeholder="Amount"
+                    minlength="1"
+                    required
+                  />
+                </div>
+              </div>
+              <!-- <div class="f_row">
+                            <div class="form_control">
+                                <input class="formInput" type="text" name="address" placeholder="Address" required>
+                            </div>
+                            <div class="form_control">
+                                <input class="formInput" type="text" name="city" placeholder="City" required>
+                            </div>
+                        </div> -->
+              <!-- <div class="f_row">
+                            <div class="form_control">
+                                <select class="formInput" name="state" id="state" required>
+                                    <option value="Alabama">Alabama</option>
+                                    <option value="Alaska">Alaska</option>
+                                    <option value="Arizona">Arizona</option>
+                                    <option value="Arkansas">Arkansas</option>
+                                    <option value="California">California</option>
+                                    <option value="Colorado">Colorado</option>
+                                    <option value="Connecticut">Connecticut</option>
+                                    <option value="Delaware">Delaware</option>
+                                    <option value="Florida">Florida</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Hawaii">Hawaii</option>
+                                    <option value="Idaho">Idaho</option>
+                                    <option value="Illinois">Illinois</option>
+                                    <option value="Indiana">Indiana</option>
+                                    <option value="Iowa">Iowa</option>
+                                    <option value="Kansas">Kansas</option>
+                                    <option value="Kentucky">Kentucky</option>
+                                    <option value="Louisiana">Louisiana</option>
+                                    <option value="Maine">Maine</option>
+                                    <option value="Maryland">Maryland</option>
+                                    <option value="Massachusetts">Massachusetts</option>
+                                    <option value="Michigan">Michigan</option>
+                                    <option value="Minnesota">Minnesota</option>
+                                    <option value="Mississippi">Mississippi</option>
+                                    <option value="Missouri">Missouri</option>
+                                    <option value="Nebraska">Nebraska</option>
+                                    <option value="Nevada">Nevada</option>
+                                    <option value="New-Hampshire">New Hampshire</option>
+                                    <option value="New-Jersey">New Jersey</option>
+                                    <option value="New-Mexico">New Mexico</option>
+                                    <option value="New-York">New York</option>
+                                    <option value="New-carolina">North Carolina</option>
+                                    <option value="North-dakota">North Dakota</option>
+                                    <option value="Ohio">Ohio</option>
+                                    <option value="Oregon">Oregon</option>
+                                    <option value="Pennsylvania">Pennsylvania</option>
+                                    <option value="Rhode-Island">Rhode Island</option>
+                                    <option value="South-Carolina">South Carolina</option>
+                                    <option value="Tennessee">Tennessee</option>
+                                    <option value="Utah">Utah</option>
+                                    <option value="Vermont">Vermont</option>
+                                    <option value="Virginia">Virginia</option>
+                                    <option value="Washington">Washington</option>
+                                    <option value="West-Virginia">West Virginia</option>
+                                    <option value="Wisconsin">Wisconsin</option>
+                                    <option value="Wyoming">Wyoming</option>
+                                </select>
+                            </div>
+                        </div> -->
+              <div class="form_control">
+                <!-- <label for="memo">Payment memo</label> -->
+                <input
+                  class="formInput"
+                  type="text"
+                  name="memo"
+                  placeholder="Payment memo"
+                  required
+                />
+              </div>
+              <div class="form_control">
+                <button class="btn secondary_text" type="submit">
+                  Make Payment
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section class="accounts">
+          <div class="">
+            <div class="activity_top">
+              <h4 class="secondary_text">
+                International/Wire transfers - Enter receiver's information
+              </h4>
+            </div>
+            <form action="/payment" method="post">
+              <% if (typeof message !== 'undefined') { %>
+              <div class="messagediv">
+                <p><%= message %></p>
+              </div>
+              <% } %>
+              <div class="form_control">
+                <input
+                  class="formInput"
+                  type="text"
+                  name="recipientName"
+                  placeholder="Recipient's Full Name"
+                  required
+                />
+              </div>
+              <div class="f_row">
+                <div class="form_control">
+                  <input
+                    class="formInput"
+                    type="text"
+                    name="routingNumber"
+                    placeholder="ABA/Routing Number"
+                    minlength="6"
+                    maxlength="9"
+                    required
+                  />
+                </div>
+                <div class="form_control">
+                  <input
+                    class="formInput"
+                    type="text"
+                    name="accountNumber"
+                    placeholder="Account Number"
+                    minlength="10"
+                    required
+                  />
+                </div>
+                <div class="form_control">
+                  <input
+                    class="formInput"
+                    type="text"
+                    name="amount"
+                    placeholder="Amount"
+                    minlength="1"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="f_row">
+                <div class="form_control">
+                  <input
+                    class="formInput"
+                    type="text"
+                    name="address"
+                    placeholder="Address"
+                    required
+                  />
+                </div>
+                <div class="form_control">
+                  <input
+                    class="formInput"
+                    type="text"
+                    name="city"
+                    placeholder="Country"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form_control">
+                <!-- <label for="memo">Payment memo</label> -->
+                <input
+                  class="formInput"
+                  type="text"
+                  name="memo"
+                  placeholder="Payment memo"
+                  required
+                />
+              </div>
+              <div class="form_control">
+                <button class="btn secondary_text myBtn">Make Payment</button>
+                <div id="myModal" class="pay-modal">
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>
+                      Your transaction is pending, please contact support
+                      immediately for the neccessary assistance..
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+      <%- include('./partials/aside.ejs') %>
+    </div>
+
+    <script>
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on the button, open the modal
+      btn.onclick = function (e) {
+        e.preventDefault()
+        modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

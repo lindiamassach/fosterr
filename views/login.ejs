@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+<body>
+    <!-- <%- include('./partials/header.ejs') %> -->
+    <header class="primary_header" style="height: 15vh;">
+        <div class="container">
+            <div class="header_top">
+                <img class="company_logo" src="assets/images/logo.png" alt="fosterr bank logo">
+            </div>
+        </div>
+    </header>   
+    <main class="main">
+        <section class="content container">
+            <div class="container">
+            <h2 class="welcome_text center_text">Login to your account</h2>
+            
+                <form action="/login" method="post">
+                    <% if (typeof message !== 'undefined') { %>
+                        <div class="messagediv">
+                            <%= message %>
+                        </div>
+                    <% } %>
+
+                    <div class="form_control">
+                        <input class="formInput" type="email" name="email" placeholder="Email" required>
+                    </div>    
+                    <div class="form_control">
+                        <input class="formInput" type="password" name="password" placeholder="Password" required>
+                    </div>    
+                    
+                    <% if (typeof errors !== 'undefined') { %>
+                        <div class="errordiv">
+                            <% errors.forEach(err => { %>
+                                <p><%= err %></p>
+                            <% }) %>
+                        </div>
+                    <% } %>
+                    
+                    <div class="form_control">
+                        <button class="formInput btn" type="submit">Log In</button>
+                    </div>
+                    <div class="form_control center-text">
+                        <!-- <p>New here? <a href="/signup">sign up</a></p> -->
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

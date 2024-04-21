@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include ('./partials/header.ejs') %>
+            <div class="container grid_layout">
+                <main>
+                    <section class="accounts">
+                        <div class="activity_top">
+                            <h4 class="secondary_text">Account information</h4>
+                        </div>
+                        <div class="table-div">
+                            <table class="history-table secondary_text">
+                                <tbody>
+                                    <div class="">
+                                        <img class="user_avatar" src="assets/images/uploaded_avatar/no-avatar-3.jpg" alt="">
+                                        <button onclick="openAvatarModal()">Change picture</button>
+                                    </div>
+                                    <dialog class="modal" id="avatar_modal">
+                                        <form id="upload_form">
+                                            <div class="flex_container">
+                                                <input type="file" accept="image/*" name="avatar">
+                                                <br>
+                                            </div>
+                                            <button class="btn" type="submit">Upload</button>
+                                            <!-- <button class="modal-close" onclick="closeAvatarModal()">Close</button> -->
+                                        </form>
+                                    </dialog> 
+                                    <tr>
+                                        <td>Name on account</td>
+                                        <td>
+                                            <%= profileData.firstName %> <%= profileData.lastName %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>Account no - Checking</td>
+                                        <td>
+                                            <%= profileData.savings %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>Account no - Savings</td>
+                                        <td>
+                                            <%= profileData.checking %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>Routing no</td>
+                                        <td>
+                                            <%= profileData.routingNo %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>Email address</td>
+                                        <td>
+                                            <%= profileData.email %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>Phone no</td>
+                                        <td>
+                                            <%= profileData.phoneNo %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>Billing address</td>
+                                        <td>
+                                            <%= profileData.address %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </main>
+                <%- include ('./partials/aside.ejs') %>
+            </div>
+            <script src="assets/profileScripts.js"></script>
+    </body>
+
+</html>

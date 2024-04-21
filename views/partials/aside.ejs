@@ -1,0 +1,36 @@
+<aside>
+    <div class="aside_card">
+        <p class="secondary_text">Rewards</p>
+        <div class="center_text">
+            <p class="primary_text">Amazon Prime Rewards</p>
+            <h2 class="big_text">1,543</h2>
+            <p class="small_text">Points</p>
+        </div>
+    </div>
+    <div class="aside_card">
+        <p class="secondary_text">Your credit score</p>
+        <div class="flex_row">
+            <img src="./assets/images/credit_score.png" alt="" class="account_icon">
+            <p class="primary_text">Free score, updated weekly</p>
+        </div>
+        <div class="aside_bottom">
+            <button class="show_modalbtn" onclick="openAsideModal()">See your score</button>
+        </div>
+        <dialog class="modal" id="aside_modal">
+            <p>Your FICO&copy; score is</p>
+            <h1>760</h1>
+            <button class="btn modal-close" onclick="closeAsideModal()">Close</button>
+        </dialog>
+    </div>
+    <div class="aside_card">
+        <p class="secondary_text">Find help</p>
+        <div class="flex_row">
+            <img src="./assets/images/help.png" alt="" class="account_icon">
+            <p class="primary_text">Need help or have any question?</p>
+        </div>
+        <div class="aside_bottom">
+            <!-- support  -->
+            <a href="mailto:customerservice@fosterronline.com">Contact Support</a>
+        </div>
+    </div>
+</aside>

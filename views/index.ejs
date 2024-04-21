@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+    <%- include ('./partials/header.ejs') %>
+    <div class="container grid_layout">
+        <main>
+            <section class="accounts">
+                <div class="flex_container">
+                    <div class="account__card">
+                        <h5 class="secondary_text">EVERYDAY SAVINGS ...<%= accountInfo?.checkingAccount.accountNumber.slice(6) %></h5>
+                        <div class="flex_row">
+                            <div class="column"><img class="account_icon" src="./assets/images/savings.png" alt=""></div>
+                            <div class="column">
+                                <h2 class="big_text">$<%= accountInfo?.checkingAccount.accountBalance %></h2>
+                                <p class="small_text">Available balance</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="account__card">
+                        <h5 class="secondary_text">EVERYDAY CHECKINGS ...<%= accountInfo?.savingsAccount.accountNumber.slice(6) %></h5>
+                        <div class="flex_row">
+                            <div class="column"><img class="account_icon" src="./assets/images/checkings.png" alt="">
+                            </div>
+                            <div class="column">
+                                <h2 class="big_text">$<%= accountInfo?.savingsAccount.accountBalance %></h2>
+                                <p class="small_text">Available balance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex_row section_bottom">
+                    <div class="column"><img class="account_icon" src="./assets/images/smiling_man.jpg" alt=""></div>
+                    <div class="column">
+                        <h4 class="secondary_text">Add your income</h4>
+                        <p class="primary_text">Including your income on your account profile may qualify you for credit
+                            line increase. <a href="#">Add my income ></a></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="accounts">
+                <div class="activity_top">
+                    <h4 class="secondary_text"> Recent Account activity</h4>
+                </div>
+                <div class="table-div">
+                    <table class="history-table primary_text">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% history.forEach(payment=> { %>
+                                <tr>
+                                    <td>
+                                        <%= payment.createdAt %>
+                                    </td>
+                                    <td>
+                                        <%= payment.memo %>
+                                    </td>
+                                    <td>$<%= payment.amount %>
+                                    </td>
+                                    <td><%= payment.status %></td>
+                                </tr>
+                        </tbody>
+                        <% }) %>
+                            <tbody>
+                                <tr>
+                                    <td>25/02/2023</td>
+                                    <td>Bill Payment</td>
+                                    <td>$84,906</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>24/02/2023</td>
+                                    <td>Recurring debit card</td>
+                                    <td>$300</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>16/02/2023</td>
+                                    <td>ACH transfer</td>
+                                    <td>$231,901</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <td>15/02/2023</td>
+                                    <td>SSA TREAS 310 XXSO..</td>
+                                    <td>$318,450</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <td>15/02/2023</td>
+                                    <td>Deposit by check</td>
+                                    <td>$19,050</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <td>12/02/2023</td>
+                                    <td>Pers Benefits p...</td>
+                                    <td>$99,050</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>11/02/2023</td>
+                                    <td>Withdrawal ACH...</td>
+                                    <td>$10,050</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <td>11/02/2023</td>
+                                    <td>SSA TREAS 420..</td>
+                                    <td>$518,045</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>11/02/2023</td>
+                                    <td>Deposit by check</td>
+                                    <td>$22,590</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>02/02/2023</td>
+                                    <td>Recurring Debit Card</td>
+                                    <td>$650</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>31/01/2023</td>
+                                    <td>Withdrawal ATM #2193</td>
+                                    <td>$2,750</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>30/01/2023</td>
+                                    <td>Withdrawal POS #2109</td>
+                                    <td>$650</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>29/01/2023</td>
+                                    <td>Withdrawal ATM #12009</td>
+                                    <td>$6,640</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>29/01/2023</td>
+                                    <td>PERS BENEFITS C..</td>
+                                    <td>$18,950</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>25/01/2023</td>
+                                    <td>SSA TREAS 291.. XSSO</td>
+                                    <td>$6,650</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>20/01/2023</td>
+                                    <td>SSA TREAS 1190.. XSSO</td>
+                                    <td>$225,650</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>18/01/2023</td>
+                                    <td>ACH Transfer</td>
+                                    <td>$100,293</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>13/01/2023</td>
+                                    <td>IRA funding #3409</td>
+                                    <td>$112,010</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>11/01/2023</td>
+                                    <td>Check Deposit #2898</td>
+                                    <td>$4,560</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>11/01/2023</td>
+                                    <td>Check Deposit #2898</td>
+                                    <td>$5,950</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>08/01/2023</td>
+                                    <td>Wire Transfer - CTRN</td>
+                                    <td>$110,990</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>07/01/2023</td>
+                                    <td>ACH Transfer</td>
+                                    <td>$100,250</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>06/01/2023</td>
+                                    <td>Bill Payment </td>
+                                    <td>$43,950</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>06/01/2023</td>
+                                    <td>Check Deposit</td>
+                                    <td>$7,680</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>05/01/2023</td>
+                                    <td>Check Deposit</td>
+                                    <td>$2,680</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>05/01/2023</td>
+                                    <td>Check Deposit</td>
+                                    <td>$33,050</td>
+                                    <td>confirmed</td>
+                                </tr>
+                            </tbody>
+                                <!-- <tfoot>
+                    <td class="center_text" colspan="4">You have reached the end of the account activity.</td>
+                </tfoot> -->
+                    </table>
+                </div>
+                <div class="section_bottom">
+                    <p class="primary_text center_text">You have reached the end of the account activity for the year.</p>
+                </div>
+            </section>
+        </main>
+        <%- include ('./partials/aside.ejs') %>
+    </div>
+</body>
+</html>

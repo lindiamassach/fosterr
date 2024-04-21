@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <header class="primary_header" style="height: 15vh;">
+            <div class="container">
+                <div class="header_top">
+                    <img class="company_logo" src="assets/images/logo.png" alt="fosterr bank logo">
+                </div>
+            </div>
+        </header>  
+        <main class="main">
+            <section class="content container">
+                <div class="container">
+                    <h2 class="welcome_text center_text">Sign Up</h2>
+
+                    <form action="/signup" method="post">
+                        <div class="f_row">
+                            <div class="form_control">
+                                <input class="formInput" type="text" name="firstName" placeholder="First Name" required>
+                            </div>
+                            <div class="form_control">
+                                <input class="formInput" type="text" name="lastName" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="f_row">
+                            <div class="form_control">
+                                <input class="formInput" type="tel" name="phoneNo" placeholder="Phone number"
+                                    minlength="10" maxlength="10" required>
+                            </div>
+                            <div class="form_control">
+                                <input class="formInput" type="email" name="email" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="f_row">
+                            <div class="form_control">
+                                <input class="formInput" type="text" name="savingsBal" placeholder="Savings Bal"
+                                    maxlength="10" required>
+                            </div>
+                            <div class="form_control">
+                                <input class="formInput" type="text" name="checkingBal" placeholder="Checking Bal" maxlength="10" required>
+                            </div>
+                        </div>
+                        <div class="form_control">
+                            <input class="formInput" type="text" name="address" placeholder="Address" required>
+                        </div>
+                        <div class="f_row">
+                            <div class="form_control">
+                                <input class="formInput" type="password" name="password" placeholder="Password" required>
+                            </div>
+                            <div class="form_control">
+                                <input class="formInput" type="password" name="confirmPassword"
+                                    placeholder=" Confirm Password" required>
+                            </div>
+                        </div>
+
+
+                        <% if (typeof errors !== 'undefined') { %>
+                            <div class="errordiv">
+                                <% errors.forEach(err => { %>
+                                    <p><%= err %></p>
+                                <% }) %>
+                            </div>
+                        <% } %>
+
+                        <div class="form_control">
+                            <button class="formInput btn" type="submit">Sign Up</button>
+                        </div>
+                    </form>
+                    <div class="form_control center-text">
+                        <p>Already have an account? <a href="/login">Login</a></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+
+    <script>
+        // This code empowers all input tags having a placeholder and data-slots attribute
+        document.addEventListener('DOMContentLoaded', () => {
+            for (const el of document.querySelectorAll("[placeholder][data-slots]")) {
+                const pattern = el.getAttribute("placeholder"),
+                    slots = new Set(el.dataset.slots || "_"),
+                    prev = (j => Array.from(pattern, (c,i) => slots.has(c)? j=i+1: j))(0),
+                    first = [...pattern].findIndex(c => slots.has(c)),
+                    accept = new RegExp(el.dataset.accept || "\\d", "g"),
+                    clean = input => {
+                        input = input.match(accept) || [];
+                        return Array.from(pattern, c =>
+                            input[0] === c || slots.has(c) ? input.shift() || c : c
+                        );
+                    },
+                    format = () => {
+                        const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
+                            i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
+                            return i<0? prev[prev.length-1]: back? prev[i-1] || first: i;
+                        });
+                        el.value = clean(el.value).join``;
+                        el.setSelectionRange(i, j);
+                        back = false;
+                    };
+                let back = false;
+                el.addEventListener("keydown", (e) => back = e.key === "Backspace");
+                el.addEventListener("input", format);
+                el.addEventListener("focus", format);
+                el.addEventListener("blur", () => el.value === pattern && (el.value=""));
+            }
+        });</script>
+</html>
